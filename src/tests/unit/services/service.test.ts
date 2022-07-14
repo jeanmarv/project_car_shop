@@ -13,22 +13,22 @@ describe('Test all service functions', () => {
         buyValue: 40000,
         doorsQty: 4,
         seatsQty: 5,
-        _id: '62c760648ae2a532c6797ffc',
-        v: 'wholks',
+        _id: '62c87efaf1f9d111bf4b6acc',
+        v: 'vvvv',
       });
     });
 
     after(() => {
       (Model.create as SinonStub).restore();
     });
-    it('consegue criar um carro', async () => {
+    it('test if create car was complete', async () => {
       const result = await carService.createCars({
         model: "Gol",
         year: 2000,
         color: 'white',
         buyValue: 40000,
-        seatsQty: 4,
-        doorsQty: 5,
+        seatsQty: 5,
+        doorsQty: 4,
       });
 
       expect(result).to.be.deep.equal({
@@ -38,8 +38,8 @@ describe('Test all service functions', () => {
         buyValue: 40000,
         doorsQty: 4,
         seatsQty: 5,
-        _id: '62c760648ae2a532c6797ffc',
-        v: 'wholks',
+        _id: '62c87efaf1f9d111bf4b6acc',
+        v: 'vvvv',
       });
     });
   });
@@ -48,7 +48,7 @@ describe('Test all service functions', () => {
     before(() => {
       sinon.stub(Model, 'find').resolves([
         {
-          _id: '62c760648ae2a532c6797ffc',
+          _id: '62c87efaf1f9d111bf4b6acc',
           model: "Gol",
           year: 2000,
           color: 'white',
@@ -62,12 +62,12 @@ describe('Test all service functions', () => {
     after(() => {
       (Model.find as SinonStub).restore();
     });
-    it('if cars return', async () => {
+    it('if cars returns', async () => {
       const result = await carService.getById();
 
       expect(result).to.be.deep.equal([
         {
-          _id: '62c760648ae2a532c6797ffc',
+          _id: '62c87efaf1f9d111bf4b6acc',
           model: "Gol",
           year: 2000,
           color: 'white',
@@ -91,10 +91,10 @@ describe('Test all service functions', () => {
         buyValue: 40000,
         doorsQty: 4,
         seatsQty: 5,
-        _id: '62c760648ae2a532c6797ffc',
-        v: 'wholks',
+        _id: '62c87efaf1f9d111bf4b6acc',
+        v: 'vvvv',
       });
-      const result = await carService.carId('62c760648ae2a532c6797ffc');
+      const result = await carService.carId('62c87efaf1f9d111bf4b6acc');
 
       expect(result).to.be.deep.equal({
         model: "Gol",
@@ -103,15 +103,15 @@ describe('Test all service functions', () => {
         buyValue: 40000,
         doorsQty: 4,
         seatsQty: 5,
-        _id: '62c760648ae2a532c6797ffc',
-        v: 'wholks',
+        _id: '62c87efaf1f9d111bf4b6acc',
+        v: 'vvvv',
       });
     });
     it('return error if car not found', async () => {
       (Model.findOne as SinonStub).restore();
       sinon.stub(Model, 'findOne').resolves(null);
       try {
-        await carService.carId('62c760648ae2a532c6797ffc');
+        await carService.carId('62c87efaf1f9d111bf4b6acc');
         expect.fail();
       } catch (error) {
         expect((error as Error).message).to.be.equal('Object not found');
@@ -122,20 +122,20 @@ describe('Test all service functions', () => {
   describe('test updatecars function', () => {
     before(() => {
       sinon.stub(Model, 'findByIdAndUpdate').resolves({
-        _id: '62c760648ae2a532c6797ffc',
+        _id: '62c87efaf1f9d111bf4b6acc',
         model: 'Uno com escada',
         year: 2001,
         color: 'blue',
-        buyValue: 10000,
+        buyValue: 100000,
         doorsQty: 4,
         seatsQty: 5,
       });
       sinon.stub(Model, 'findById').resolves({
-        _id: '62c760648ae2a532c6797ffc',
+        _id: '62c87efaf1f9d111bf4b6acc',
         model: 'Uno com escada',
         year: 2001,
         color: 'blue',
-        buyValue: 10000,
+        buyValue: 100000,
         doorsQty: 4,
         seatsQty: 5,
       });
@@ -146,21 +146,21 @@ describe('Test all service functions', () => {
       (Model.findById as SinonStub).restore();
     });
     it('test if cars can be updated', async () => {
-      const result = await carService.updateCars('62c760648ae2a532c6797ffc', {
+      const result = await carService.updateCars('62c87efaf1f9d111bf4b6acc', {
         model: 'Uno com escada',
         year: 2001,
         color: 'blue',
-        buyValue: 10000,
-        seatsQty: 4,
-        doorsQty: 5,
+        buyValue: 100000,
+        seatsQty: 5,
+        doorsQty: 4,
       });
 
       expect(result).to.be.deep.equal({
-        _id: '62c760648ae2a532c6797ffc',
+        _id: '62c87efaf1f9d111bf4b6acc',
         model: 'Uno com escada',
         year: 2001,
         color: 'blue',
-        buyValue: 10000,
+        buyValue: 100000,
         doorsQty: 4,
         seatsQty: 5,
       });
@@ -170,20 +170,20 @@ describe('Test all service functions', () => {
   describe('test delete car functions', () => {
     before(() => {
       sinon.stub(Model, 'findOneAndDelete').resolves({
-        _id: '62c760648ae2a532c6797ffc',
+        _id: '62c87efaf1f9d111bf4b6acc',
         model: 'Uno com escada',
         year: 2001,
         color: 'blue',
-        buyValue: 10000,
+        buyValue: 100000,
         doorsQty: 4,
         seatsQty: 5,
       });
       sinon.stub(Model, 'findById').resolves({
-        _id: '62c760648ae2a532c6797ffc',
+        _id: '62c87efaf1f9d111bf4b6acc',
         model: 'Uno com escada',
         year: 2001,
         color: 'blue',
-        buyValue: 10000,
+        buyValue: 100000,
         doorsQty: 4,
         seatsQty: 5,
       });
@@ -194,11 +194,11 @@ describe('Test all service functions', () => {
       (Model.findById as SinonStub).restore();
     });
     it('test if able to delete a car', async () => {
-      const result = await carService.deleteCars('62c760648ae2a532c6797ffc');
+      const result = await carService.deleteCars('62c87efaf1f9d111bf4b6acc');
 
       expect(result).to.be.deep.equal({
-        _id: '62c760648ae2a532c6797ffc',
-        buyValue: 10000,
+        _id: '62c87efaf1f9d111bf4b6acc',
+        buyValue: 100000,
         color: 'blue',
         doorsQty: 4,
         model: 'Uno com escada',
@@ -210,7 +210,7 @@ describe('Test all service functions', () => {
       (Model.findById as SinonStub).restore();
       sinon.stub(Model, 'findById').resolves(null);
       try {
-        await carService.deleteCars('62c760648ae2a532c6797ffc');
+        await carService.deleteCars('62c87efaf1f9d111bf4b6acc');
         expect.fail();
       } catch (error) {
         expect((error as Error).message).to.be.equal('Object not found');
