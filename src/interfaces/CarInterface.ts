@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { VehicleSchema } from './vehicleInterface';
+import { VehicleSchema } from './VehicleInterface';
 
 const CarSchema = VehicleSchema.extend({
   doorsQty: z.number().min(2).max(4),
